@@ -466,7 +466,8 @@ static void utn_subMenu(Publicacion * pArrayPublicacion , int limitePubli , Clie
 								"\n 2) Cantidad de avisos pausados"
 								"\n 3) Rubro con mas avisos"
 								"\n 4) Cliente con mas avisos  ACTIVOS"
-								"\n 5) Cliente con mas avisos PAUSADOS", "\n Error", 1, 6, 2);
+								"\n 5) Cliente con mas avisos PAUSADOS"
+								"\n 6) Volver al menu anterior" , "\n Error", 1, 6, 2);
 		switch (opcion)
 		{
 		case 1:

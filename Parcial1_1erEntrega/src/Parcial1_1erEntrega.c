@@ -26,12 +26,6 @@ int main(void) {
 	publicacion_altaForzada(pArrayPublicacion,PUBLICACION_QTY,1,2,"Vendo heladera samsung");
 	publicacion_altaForzada(pArrayPublicacion,PUBLICACION_QTY,1,1,"QEPD EZEQUIEL MANZANO - Siempre en nuestros corazones");
 	publicacion_altaForzada(pArrayPublicacion,PUBLICACION_QTY,5,5,"Se alquila casa en canning super barata 100000 usd");
-	publicacion_altaForzada(pArrayPublicacion,PUBLICACION_QTY,5,5,"Se alquila casa en canning super barata 100000 usd");
-	publicacion_altaForzada(pArrayPublicacion,PUBLICACION_QTY,5,5,"Se alquila casa en canning super barata 100000 usd");
-	publicacion_altaForzada(pArrayPublicacion,PUBLICACION_QTY,5,5,"Se alquila casa en canning super barata 100000 usd");
-	publicacion_altaForzada(pArrayPublicacion,PUBLICACION_QTY,5,5,"Se alquila casa en canning super barata 100000 usd");
-	publicacion_altaForzada(pArrayPublicacion,PUBLICACION_QTY,5,5,"Se alquila casa en canning super barata 100000 usd");
-	publicacion_altaForzada(pArrayPublicacion,PUBLICACION_QTY,5,5,"Se alquila casa en canning super barata 100000 usd");
 
 	utn_menuPrincipal(pArrayPublicacion, PUBLICACION_QTY, pArrayCliente, CLIENTE_QTY);
 

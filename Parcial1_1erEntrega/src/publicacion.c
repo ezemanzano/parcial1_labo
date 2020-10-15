@@ -517,7 +517,7 @@ int publicacion_clienteConMasAvisos(Publicacion * pArrayPubli, int limitePubli,C
 				}
 			}
 		}
-		printf("\n El cliente con mas avisos es: %s %s CON: %d avisos", bufferCliente.nombre,bufferCliente.apellido, contadorMax);
+		printf("\n El cliente con mas avisos es: %s %s id-> %d CON: %d avisos", bufferCliente.nombre,bufferCliente.apellido,bufferCliente.id, contadorMax);
 		}
 		else
 		{
@@ -614,13 +614,14 @@ int publicacion_buscarLibreRef (Publicacion * pArrayPubli, int limite, int * pIn
 	int retorno = -1;
 	int i ;
 		if (pArrayPubli != NULL && limite >0 && pIndice != NULL){
-			for ( i = 0; i<limite; i++) {
+			for ( i = 0; i<limite; i++)
+			{
 				if(pArrayPubli[i].isEmpty == TRUE)
-					{
-					*pIndice = i;
-					retorno = 0;
-					break;
-					}
+				{
+				*pIndice = i;
+				retorno = 0;
+				break;
+				}
 			}
 		}
 	return retorno;
@@ -794,14 +795,14 @@ int publicacion_clienteConMasAvisosActivos(Publicacion * pArrayPubli, int limite
 				}
 			}
 		}
-		if (contadorMax==0)
-		{
-			printf("\n No hay avisos ACTIVOS.");
-		}
-		else
-		{
-			printf("\n El cliente con mas avisos ACTIVOS es: %s %s CON: %d avisos", bufferCliente.nombre,bufferCliente.apellido, contadorMax);
-		}
+			if (contadorMax==0)
+			{
+				printf("\n No hay avisos ACTIVOS.");
+			}
+			else
+			{
+				printf("\n El cliente con mas avisos ACTIVOS es: %s %s id-> %d CON: %d avisos", bufferCliente.nombre,bufferCliente.apellido,bufferCliente.id, contadorMax);
+			}
 
 		}
 		else
@@ -869,13 +870,14 @@ int publicacion_clienteConMasAvisosPausados(Publicacion * pArrayPubli, int limit
 				}
 			}
 		}
-		if (contadorMax==0){
-			printf("No Hay avisos pausados...");
-		}
-		else
-		{
-			printf("\n El cliente con mas avisos PAUSADOS es: %s %s CON: %d avisos", bufferCliente.nombre,bufferCliente.apellido, contadorMax);
-		}
+			if (contadorMax==0)
+			{
+				printf("No Hay avisos pausados...");
+			}
+			else
+			{
+				printf("\n El cliente con mas avisos PAUSADOS es: %s %s id-> %d CON: %d avisos", bufferCliente.nombre,bufferCliente.apellido,bufferCliente.id, contadorMax);
+			}
 
 		}
 		else
