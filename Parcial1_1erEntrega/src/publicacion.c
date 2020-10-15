@@ -496,9 +496,9 @@ int publicacion_baja (Publicacion * pArrayPubli, int limitePublic, int idCliente
 
 int publicacion_clienteConMasAvisos(Publicacion * pArrayPubli, int limitePubli,Cliente * pArrayCliente, int limiteCliente){
 	int retorno = -1;
-	int contador=0;
+	int contador;
 	Cliente bufferCliente;
-	int contadorMax = 0;
+	int contadorMax;
 	if (pArrayPubli!=NULL&& limitePubli>0 && pArrayCliente != NULL && limiteCliente>0)
 	{
 		if (cliente_sePuedeSeguir(pArrayCliente, limiteCliente)==1)
@@ -508,7 +508,7 @@ int publicacion_clienteConMasAvisos(Publicacion * pArrayPubli, int limitePubli,C
 			if (pArrayCliente[i].isEmpty == FALSE)
 			{
 				publicacion_cantidadPublicPorIdCliente(pArrayPubli,limitePubli,pArrayCliente[i].id,&contador);
-				if (contador>=contadorMax)
+				if (i == 0 || contador>=contadorMax)
 				{
 				bufferCliente = pArrayCliente[i];
 				contadorMax=contador;
@@ -568,8 +568,8 @@ int publicacion_cantidadPausados (Publicacion * pArrayPubli, int limitePubli) {
 int publicacion_rubroConMasAvisos (Publicacion * pArrayPubli, int limitePubli){
 	int retorno = -1;
 	int contador = 0;
-	int rubroMax = 0;
-	int rubroAMostrar=0;
+	int rubroMax ;
+	int rubroAMostrar;
 	if (publicacion_sePuedeSeguir(pArrayPubli, limitePubli)==1)
 	{
 		for (int i = MIN_RUBRO ; i<MAX_RUBRO; i++)
@@ -583,7 +583,7 @@ int publicacion_rubroConMasAvisos (Publicacion * pArrayPubli, int limitePubli){
 				}
 			}
 
-			if (contador > rubroMax)
+			if (i == MIN_RUBRO || contador > rubroMax)
 			{
 				rubroAMostrar = i;
 				rubroMax = contador;

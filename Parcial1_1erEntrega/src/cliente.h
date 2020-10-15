@@ -39,5 +39,6 @@
 
 	int cliente_altaForzada(Cliente * pArray, int limite , char * nombre, char * apellido, char * cuit);
 	int cliente_sePuedeSeguir(Cliente * pArrayCliente, int limiteCliente);
+	int cliente_noSeRepiteCuit(Cliente * pArrayCliente, int limiteCliente, char * cuitIngresado);
 
 #endif /* CLIENTE_H_ */

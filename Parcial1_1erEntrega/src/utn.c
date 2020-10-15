@@ -22,6 +22,13 @@ static int esCuit(char*cadena, int limite);
 static int esString (char*cadena, int limite);
 static void utn_subMenu(Publicacion * pArrayPublicacion , int limitePubli , Cliente * pArrayCliente , int limiteCliente);
 
+/** \brief Get data from the console.
+* position of the array
+* \param char * cadena -> Pointer where to save the fgets.
+* \param int longitud -> cadena length
+* \return 1
+*/
+
 static int myGets(char* cadena, int longitud){
 	int retorno = -1; //ERROR
 	char bufferString[4096];
@@ -46,6 +53,13 @@ static int myGets(char* cadena, int longitud){
 	}
 	return retorno;
 }
+
+
+/** \brief Get an integer with mygets and checks if the string are just numbers.
+* position of the array
+* \param int * pResultado -> Pointer where to save the result
+* return 0 if success otherwise 1
+*/
 static int getInt (int* pResultado){
 	int retorno = -1 ;
 	char buffer[4096];
@@ -55,6 +69,12 @@ static int getInt (int* pResultado){
 	}
 	return retorno;
 }
+
+/** \brief Get a float  and checks if the string are just numbers with one dot.
+* position of the array
+* \param float * pResultado -> Pointer where to save the result
+* return 0 if success otherwise 1
+*/
 static int getFlt (float* pResultado){
 	int retorno = -1 ;
 	char buffer[4096];
@@ -64,6 +84,12 @@ static int getFlt (float* pResultado){
 	}
 	return retorno;
 }
+
+/** \brief checks if the string is made up of just numbers, also checks the positivity of the number and the excess of commas.
+* position of the array
+* \param float * pResultado -> Pointer where to save the result
+* return 0 if success otherwise 1
+*/
 
 static int esNumerica(char*cadena){
 	int retorno = 1 ;
@@ -78,6 +104,15 @@ static int esNumerica(char*cadena){
 	return retorno;
 }
 
+/** \brief get a number from the user.
+* \param int * order -> Pointer where to save the result
+* \param char * mensaje -> message to show
+* \param char * mesajeError -> message to show in case of error.
+* \param int minimo -> min number accepted by the program
+* \param int maximo -> max number accepted by the program
+* \param int intentos -> max amount of attempts.
+* return 0 if success otherwise 1
+*/
 
 int utn_getNumero (int* pResultado, char* mensaje, char* mensajeError,int minimo, int maximo, int intentos){
 
@@ -103,6 +138,15 @@ int utn_getNumero (int* pResultado, char* mensaje, char* mensajeError,int minimo
 	return retorno;
 }
 
+/** \brief get a float number from the user.
+* \param float * pResutlado -> Pointer where to save the result
+* \param char * mensaje -> message to show
+* \param char * mesajeError -> message to show in case of error.
+* \param int minimo -> min number accepted by the program
+* \param int maximo -> max number accepted by the program
+* \param int intentos -> max amount of attempts.
+* return 0 if success otherwise 1
+*/
 int utn_getFloat (float* pResultado, char* mensaje, char* mensajeError,float minimo, float maximo, int intentos){
 
 	int retorno = -1;
@@ -127,6 +171,15 @@ int utn_getFloat (float* pResultado, char* mensaje, char* mensajeError,float min
 	return retorno;
 }
 
+
+/** \brief get a string with just letters from the user.
+* \param char * pResutlado -> Pointer where to save the result
+* \param char * mensaje -> message to show
+* \param char * mesajeError -> message to show in case of error.
+* \param int len -> max size of the result
+
+* return 0 if success otherwise 1
+*/
 
 int utn_getNombre (char * pResultado, int len, char *mensaje, char* mensajeError, int intentos){
 	int retorno = -1 ;
@@ -153,6 +206,12 @@ int utn_getNombre (char * pResultado, int len, char *mensaje, char* mensajeError
 
 	return retorno;
 }
+/** \brief checks if the string is made up of just letters.
+* position of the array
+* \param char * pResultado -> Pointer where to save the result
+* \param int limite -> max size of the string
+* return 0 if success otherwise 1
+*/
 
 static int esNombre (char*cadena, int limite) {
 	int retorno = 1;
@@ -165,6 +224,15 @@ static int esNombre (char*cadena, int limite) {
 		}}
 	return retorno;
 }
+/** \brief gets a cuit from the user
+* position of the array
+* \param char * pResutlado -> Pointer where to save the result
+* \param char * mensaje -> message to show
+* \param char * mesajeError -> message to show in case of error.
+* \param int len -> max size of the result
+t
+* return 0 if success otherwise 1
+*/
 
 int utn_getCuit (char * pResultado, int len, char *mensaje, char* mensajeError, int intentos){
 	int retorno = -1 ;
@@ -191,6 +259,13 @@ int utn_getCuit (char * pResultado, int len, char *mensaje, char* mensajeError, 
 
 	return retorno;
 }
+
+/** \brief checks if the string is made up of just numbers, also checks the amount of '-' (max 2)
+* position of the array
+* \param char * cadena -> Pointer to the array
+* \param limite, len of the array
+* return 0 if success otherwise 1
+*/
 
 static int esCuit(char*cadena, int limite) {
 	int retorno = 1;
@@ -222,6 +297,17 @@ static int esCuit(char*cadena, int limite) {
 	return retorno;
 }
 
+
+/** \brief gets a text from the user
+* position of the array
+* \param char * pResutlado -> Pointer where to save the result
+* \param char * mensaje -> message to show
+* \param char * mesajeError -> message to show in case of error.
+* \param int len -> max size of the result
+t
+* return 0 if success otherwise 1
+*/
+
 int utn_getString (char * pResultado, int len, char *mensaje, char* mensajeError, int intentos){
 	int retorno = -1 ;
 	char buffer[4096];
@@ -247,6 +333,13 @@ int utn_getString (char * pResultado, int len, char *mensaje, char* mensajeError
 
 	return retorno;
 }
+/** \brief check if the array has only letters and numbers.
+* position of the array
+* \param int len -> max size of the result
+* \param char * cadena, pointer to array
+* return 0 if success otherwise 1
+*/
+
 
 static int esString (char*cadena, int limite) {
 	int retorno = 1;

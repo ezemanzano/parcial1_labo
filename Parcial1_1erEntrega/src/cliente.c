@@ -53,7 +53,8 @@ int cliente_alta (Cliente * pArrays, int limite)
 		{
 				if (utn_getNombre(bufferCliente.nombre,SIZE_NOMBRE , "\n Nombre?", "\n ERROR",2) == 0 &&
 					utn_getNombre(bufferCliente.apellido, SIZE_NOMBRE, " \n Apellido?","\n ERROR",3) == 0 &&
-					utn_getCuit(bufferCliente.cuit, SIZE_CUIT,"\n Cuit?","\n ERROR",3) == 0 )
+					utn_getCuit(bufferCliente.cuit, SIZE_CUIT,"\n Cuit?","\n ERROR",3) == 0 &&
+					cliente_noSeRepiteCuit(pArrays, limite,(bufferCliente.cuit))==0 )
 				{
 						pArrays[indice] = bufferCliente;
 						pArrays[indice].id = cliente_generarNuevoId();
@@ -62,7 +63,7 @@ int cliente_alta (Cliente * pArrays, int limite)
 						printf("\n SUCCESS - Nuevo cliente OK");
 				} else
 					{
-						printf("horror");
+						printf("\n ERROR");
 					}
 			} else
 			{
@@ -120,7 +121,8 @@ int cliente_modificar (Cliente * pArrays, int limite)
 
 				if (utn_getNombre(bufferCliente.nombre, SIZE_NOMBRE ,"\n Nuevo nombre?", "\n ERROR",2) == 0 &&
 					utn_getNombre(bufferCliente.apellido, SIZE_NOMBRE, " \n Ingrese nuevo apellido","ERROR",3) == 0 &&
-					utn_getCuit(bufferCliente.cuit, SIZE_CUIT, "nuevo Cuit?", "\n ERROR", 2)==0)
+					utn_getCuit(bufferCliente.cuit, SIZE_CUIT, "nuevo Cuit?", "\n ERROR", 2)==0 &&
+					cliente_noSeRepiteCuit(pArrays, limite, bufferCliente.cuit)==0)
 					{
 						pArrays[indiceAModificar] = bufferCliente; // COPIAMOS AL ARRAY
 						printf("\n Cliente Modificado.");
@@ -307,6 +309,36 @@ int cliente_sePuedeSeguir(Cliente * pArrayCliente, int limiteCliente){
 			{
 				retorno=1;
 				break;
+			}
+		}
+	}
+return retorno;
+}
+
+
+/**
+ * \brief Chequea si hay algun cliente de alta con el mismo cuit ingresado
+ * \param Cliente * pArrayCliente  Es el puntero al array de cliente
+ * \param int limiteCliente, es el tamaño de array de clientes
+ * \param char * cuitIngresado, es el cuit a buscar entre los cuits ya existentes
+ * \return (-1) Error / (1) Si lo hay
+ *
+ */
+int cliente_noSeRepiteCuit(Cliente * pArrayCliente, int limiteCliente, char  * cuitIngresado){
+	int retorno = -1;
+	if (pArrayCliente!=NULL && limiteCliente>0)
+	{
+		for(int i = 0; i<limiteCliente;i++)
+		{
+			if(strncmp(cuitIngresado,pArrayCliente[i].cuit,SIZE_CUIT)==0)
+			{
+				printf("Error - Ese cuit ya existe");
+				retorno = -1;
+				break;
+			}
+			else
+			{
+				retorno = 0;
 			}
 		}
 	}
