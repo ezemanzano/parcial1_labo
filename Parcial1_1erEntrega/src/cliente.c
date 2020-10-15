@@ -4,14 +4,15 @@
  *  Created on: Sep 22, 2020
  *      Author: ezemanzano
  */
-#include "cliente.h"
+
 
 #include <stdio_ext.h>
 #include <stdlib.h>
 #include <string.h>
 
 #include "utn.h"
-#include "publicacion.h"
+#include "cliente.h"
+
 static int cliente_generarNuevoId (void);
 
 /**

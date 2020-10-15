@@ -43,9 +43,13 @@
 
 	void publicacion_listarPublicacionesDeCliente( Publicacion * pArrayPublic, int limitePubli , int idCliente);
 	int publicacion_clienteConMasAvisos(Publicacion * pArrayPubli, int limitePubli,Cliente * pArrayCliente, int limiteCliente);
+	int publicacion_clienteConMasAvisosPausados(Publicacion * pArrayPubli, int limitePubli,Cliente * pArrayCliente, int limiteCliente);
+	int publicacion_clienteConMasAvisosActivos(Publicacion * pArrayPubli, int limitePubli,Cliente * pArrayCliente, int limiteCliente);
 	int publicacion_cantidadPausados (Publicacion * pArrayPubli, int limitePubli);
 	int publicacion_rubroConMasAvisos (Publicacion * pArrayPubli, int limitePubli);
 	int publicacion_cantidadPublicPorIdCliente(Publicacion * pArrayPublic, int limitePubli, int idCliente, int *resContador);
+	int publicacion_cantidadPublicPorIdClienteActivas(Publicacion * pArrayPublic, int limitePubli, int idCliente, int *resContador);
+	int publicacion_cantidadPublicPorIdClientePausados(Publicacion * pArrayPublic, int limitePubli, int idCliente, int *resContador);
 	int publicacion_listaClientes (Cliente * pArrayCliente, int limiteClientes, Publicacion * pArrayPublic, int limitePubli);
 	int publicacion_informacionCliente(Publicacion * pArrayPubli, int limite , Cliente * pArrayCliente, int limiteCliente, int idCliente);
 

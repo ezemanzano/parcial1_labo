@@ -13,13 +13,13 @@
 #define TRUE 1
 #define FALSE 0
 
-	typedef struct {
-		char nombre[SIZE_NOMBRE];
-		char apellido[SIZE_NOMBRE];
-		char cuit[SIZE_CUIT];
-		int isEmpty;
-		int id;
-		} Cliente;
+typedef struct {
+	char nombre[SIZE_NOMBRE];
+	char apellido[SIZE_NOMBRE];
+	char cuit[SIZE_CUIT];
+	int isEmpty;
+	int id;
+	} Cliente;
 
 	int cliente_init(Cliente * pArrayClientes, int limite);
 

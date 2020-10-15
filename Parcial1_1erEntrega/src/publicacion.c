@@ -9,7 +9,9 @@
 #include <stdio_ext.h>
 #include <stdlib.h>
 #include <string.h>
+
 #include "publicacion.h"
+#include "cliente.h"
 #include "utn.h"
 
 static int publicacion_generarNuevoId (void);
@@ -340,7 +342,7 @@ int publicacion_cantidadPublicPorIdCliente(Publicacion * pArrayPublic, int limit
 	int contador=0;
 	for (int j = 0; j<limitePubli;j++)
 	{
-		if (pArrayPublic[j].idCliente == idCliente && pArrayPublic[j].isEmpty == FALSE && pArrayPublic[j].estado == PUBLICACION_ACTIVA)
+		if (pArrayPublic[j].idCliente == idCliente && pArrayPublic[j].isEmpty == FALSE)
 		{
 			contador++;
 			retorno=0;
@@ -760,6 +762,153 @@ int publicacion_altaForzada(Publicacion * pArray, int limite ,int idCliente,int 
 	return retorno;
 }
 
+
+/**
+ * \brief Imprime por pantalla el cliente con mayor cantidad de avisos ACTIVOS.
+ * \param Publicacion * pArrayPubli Es el puntero al array de publicaciones
+ * \param int limitePubli, es el tamaño de array
+ * \param Cliente * pArrayCliente  Es el puntero al array de cliente
+ * \param int limiteCliente, es el tamaño de array de clientes
+ * \return (-1) Error / (0) Ok
+ */
+
+
+int publicacion_clienteConMasAvisosActivos(Publicacion * pArrayPubli, int limitePubli,Cliente * pArrayCliente, int limiteCliente){
+	int retorno = -1;
+	int contador;
+	Cliente bufferCliente;
+	int contadorMax;
+	if (pArrayPubli!=NULL&& limitePubli>0 && pArrayCliente != NULL && limiteCliente>0)
+	{
+		if (cliente_sePuedeSeguir(pArrayCliente, limiteCliente)==1)
+		{
+		for (int i = 0; i<limiteCliente;i++)
+		{
+			if (pArrayCliente[i].isEmpty == FALSE)
+			{
+				publicacion_cantidadPublicPorIdClienteActivas(pArrayPubli,limitePubli,pArrayCliente[i].id,&contador);
+				if (i == 0 || contador>=contadorMax)
+				{
+				bufferCliente = pArrayCliente[i];
+				contadorMax=contador;
+				}
+			}
+		}
+		if (contadorMax==0)
+		{
+			printf("\n No hay avisos ACTIVOS.");
+		}
+		else
+		{
+			printf("\n El cliente con mas avisos ACTIVOS es: %s %s CON: %d avisos", bufferCliente.nombre,bufferCliente.apellido, contadorMax);
+		}
+
+		}
+		else
+		{
+			printf("\n No hay clientes para mostrar.");
+		}
+	}
+return retorno;
+}
+
+/**
+ * \brief Cuenta la cantidad de avisos activos que tiene un cliente y la devuelve como parametro
+ * \param Publicacion * pArrayPubli Es el puntero al array de publicaciones
+ * \param int limitePubli, es el tamaño de array
+ * \param int idCLiente, es el id del cliente al que se quiere buscar la cantidad de avisos
+ * \param int * resContador, es el puntero para devovler el resultado.
+ * \return (-1) Error / (0) Ok
+ */
+
+int publicacion_cantidadPublicPorIdClienteActivas(Publicacion * pArrayPublic, int limitePubli, int idCliente, int *resContador)
+{
+	int retorno = -1;
+	int contador=0;
+	for (int j = 0; j<limitePubli;j++)
+	{
+		if (pArrayPublic[j].idCliente == idCliente && pArrayPublic[j].isEmpty == FALSE && pArrayPublic[j].estado == PUBLICACION_ACTIVA)
+		{
+			contador++;
+			retorno=0;
+		}
+	}
+	*resContador = contador;
+	return retorno;
+}
+
+
+/**
+ * \brief Imprime por pantalla el cliente con mayor cantidad de avisos Pausados.
+ * \param Publicacion * pArrayPubli Es el puntero al array de publicaciones
+ * \param int limitePubli, es el tamaño de array
+ * \param Cliente * pArrayCliente  Es el puntero al array de cliente
+ * \param int limiteCliente, es el tamaño de array de clientes
+ * \return (-1) Error / (0) Ok
+ */
+
+
+int publicacion_clienteConMasAvisosPausados(Publicacion * pArrayPubli, int limitePubli,Cliente * pArrayCliente, int limiteCliente){
+	int retorno = -1;
+	int contador;
+	Cliente bufferCliente;
+	int contadorMax;
+	if (pArrayPubli!=NULL&& limitePubli>0 && pArrayCliente != NULL && limiteCliente>0)
+	{
+		if (cliente_sePuedeSeguir(pArrayCliente, limiteCliente)==1)
+		{
+		for (int i = 0; i<limiteCliente;i++)
+		{
+			if (pArrayCliente[i].isEmpty == FALSE)
+			{
+				publicacion_cantidadPublicPorIdClientePausados(pArrayPubli,limitePubli,pArrayCliente[i].id,&contador);
+				if (i == 0 || contador>=contadorMax)
+				{
+				bufferCliente = pArrayCliente[i];
+				contadorMax=contador;
+				}
+			}
+		}
+		if (contadorMax==0){
+			printf("No Hay avisos pausados...");
+		}
+		else
+		{
+			printf("\n El cliente con mas avisos PAUSADOS es: %s %s CON: %d avisos", bufferCliente.nombre,bufferCliente.apellido, contadorMax);
+		}
+
+		}
+		else
+		{
+			printf("\n No hay clientes para mostrar.");
+		}
+	}
+return retorno;
+}
+/**
+ * \brief Cuenta la cantidad de avisos pausados que tiene un cliente y la devuelve como parametro
+ * \param Publicacion * pArrayPubli Es el puntero al array de publicaciones
+ * \param int limitePubli, es el tamaño de array
+ * \param int idCLiente, es el id del cliente al que se quiere buscar la cantidad de avisos
+ * \param int * resContador, es el puntero para devovler el resultado.
+ * \return (-1) Error / (0) Ok
+ */
+
+int publicacion_cantidadPublicPorIdClientePausados(Publicacion * pArrayPublic, int limitePubli, int idCliente, int *resContador)
+{
+	int retorno = -1;
+	int contador=0;
+	for (int j = 0; j<limitePubli;j++)
+	{
+		if (pArrayPublic[j].idCliente == idCliente && pArrayPublic[j].isEmpty == FALSE && pArrayPublic[j].estado == PUBLICACION_PAUSADA)
+		{
+			contador++;
+			retorno=0;
+		}
+	}
+	*resContador = contador;
+	return retorno;
+}
 
 
 

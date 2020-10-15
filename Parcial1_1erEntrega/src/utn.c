@@ -17,6 +17,7 @@ static int myGets (char* cadena, int longitud);
 static int getInt (int* pResultado);
 static int getFlt (float* pResultado);
 static int esNumerica (char* cadena);
+static int esFloat(char*cadena);
 static int esNombre (char*cadena, int limite);
 static int esCuit(char*cadena, int limite);
 static int esString (char*cadena, int limite);
@@ -78,12 +79,40 @@ static int getInt (int* pResultado){
 static int getFlt (float* pResultado){
 	int retorno = -1 ;
 	char buffer[4096];
-	if (myGets(buffer,sizeof(buffer)) == 1  && esNumerica(buffer)== 1){
+	if (myGets(buffer,sizeof(buffer)) == 1  && esFloat(buffer)== 1){
 		retorno = 0;
 		*pResultado = atof(buffer);
 	}
 	return retorno;
 }
+
+static int esFloat(char*cadena){
+	int retorno = 1 ;
+	int i = 0;
+	int contadorPuntos = 0 ;
+	if (cadena[0] == '-' || cadena[0] == '+'){
+		i = 1;
+	}
+	for (;cadena[i] != '\0';i++) {
+		if (cadena[i] > '9' || cadena[i] < '0')
+		{
+			if (cadena[i] == '.'){
+				contadorPuntos++;
+				if (contadorPuntos >1){
+					retorno = 0;
+					break;
+				}
+			}
+			else
+			{
+				retorno = 0;
+				break;
+			}
+		}
+	}
+	return retorno;
+}
+
 
 /** \brief checks if the string is made up of just numbers, also checks the positivity of the number and the excess of commas.
 * position of the array
@@ -436,7 +465,8 @@ static void utn_subMenu(Publicacion * pArrayPublicacion , int limitePubli , Clie
 		utn_getNumero(&opcion, "\n 1) Cliente con mas avisos"
 								"\n 2) Cantidad de avisos pausados"
 								"\n 3) Rubro con mas avisos"
-								"\n 4) Volver al menu anterior", "\n Error", 1, 4, 2);
+								"\n 4) Cliente con mas avisos  ACTIVOS"
+								"\n 5) Cliente con mas avisos PAUSADOS", "\n Error", 1, 6, 2);
 		switch (opcion)
 		{
 		case 1:
@@ -448,9 +478,15 @@ static void utn_subMenu(Publicacion * pArrayPublicacion , int limitePubli , Clie
 		case 3:
 			publicacion_rubroConMasAvisos(pArrayPublicacion, limitePubli);
 			break;
+		case 4:
+			publicacion_clienteConMasAvisosActivos(pArrayPublicacion, limitePubli, pArrayCliente, limiteCliente);
+			break;
+		case 5:
+			publicacion_clienteConMasAvisosPausados(pArrayPublicacion, limitePubli, pArrayCliente, limiteCliente);
+			break;
 
 		}
-	} while(opcion!=4);
+	} while(opcion!=6);
 
 }
 
