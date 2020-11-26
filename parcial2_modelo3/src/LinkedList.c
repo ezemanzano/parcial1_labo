@@ -741,8 +741,7 @@ int ll_filterByInt(LinkedList* this, int (*pFunc)(void*,int),int Cobradas)
                                ( 0) Si ok
  */
 
-
-int ll_mapAndBreak(LinkedList* this, int (*pFunc)(void*,int),int indice)
+int ll_mapAndBreak(LinkedList* this, int (*pFunc)(void*,int),int id)
 {
     int returnAux =-1;
     int len = ll_len(this);
@@ -753,7 +752,7 @@ int ll_mapAndBreak(LinkedList* this, int (*pFunc)(void*,int),int indice)
         for (int i = 0;i<len;i++)
         {
             pElemento=ll_get(this, i);
-            if(pFunc(pElemento,indice)==1)
+            if(pFunc(pElemento,id)==1)
             {
                 returnAux=i;
                 break;

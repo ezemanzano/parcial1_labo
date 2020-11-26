@@ -38,8 +38,8 @@ int main(void) {
 				"2) Alta Venta\n"
 				"3) Modificar Venta \n"
 				"4) Cobrar Venta\n"
-				"5) Generar A Cobrar.csv \n"
-				"6) Generar Cobradas.csv \n"
+				"5) Generar cobradas.csv \n"
+				"6) Generar a_cobrar.csv \n"
 				"7) Informes", "Error", 1, 8, 2);
 		switch (opcion)
 		{
@@ -73,16 +73,16 @@ int main(void) {
 			}
 		break;
 		case 5:
-			pArrayListVentasACobrar=ll_clone(pArrayListVentas);
-			ll_filterByInt(pArrayListVentasACobrar,ventas_filtrarPorCobradas,1);
-			ll_map(pArrayListVentasACobrar,ventas_imprimirTodos);
-			controller_generarListaAcobrar("a_cobrar.csv", pArrayListClientes,pArrayListVentasACobrar);
+			pArrayListVentasCobradas=ll_clone(pArrayListVentas);
+			ll_filterByInt(pArrayListVentasCobradas,ventas_filtrarPorCobradas,1);
+			ll_map(pArrayListVentasCobradas,ventas_imprimirTodos);
+			controller_generarListaAcobrar("cobradas.csv", pArrayListClientes,pArrayListVentasCobradas);
 			break;
 		case 6:
-			pArrayListVentasCobradas=ll_clone(pArrayListVentas);
-			ll_filterByInt(pArrayListVentasCobradas,ventas_filtrarPorCobradas,0);
-			ll_map(pArrayListVentasCobradas,ventas_imprimirTodos);
-			controller_generarListaCobrados("cobradas.csv", pArrayListClientes,pArrayListVentasCobradas);
+			pArrayListVentasACobrar=ll_clone(pArrayListVentas);
+			ll_filterByInt(pArrayListVentasACobrar,ventas_filtrarPorCobradas,0);
+			ll_map(pArrayListVentasACobrar,ventas_imprimirTodos);
+			controller_generarListaCobrados("a_cobrar.csv", pArrayListClientes,pArrayListVentasACobrar);
 			break;
 		case 7:
 			do

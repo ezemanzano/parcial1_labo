@@ -26,7 +26,7 @@ id,idcliente,cantidadAfiches,nombreArchivo,zona,estado
 25,15,206,Gibson,2,1
 26,11,369,Ramirez,1,0
 27,13,273,Mcneil,0,0
-28,14,639,Wilkinson,1,0
+28,14,639,Wilkinson,1,1
 29,14,667,Ballard,1,1
 30,11,749,Kelley,1,1
 31,10,139,Cobb,1,0
@@ -34,11 +34,12 @@ id,idcliente,cantidadAfiches,nombreArchivo,zona,estado
 33,6,442,Nunez,0,1
 34,14,909,Lopez,0,0
 35,8,642,Davidson,0,1
-36,2,151,Cunningham,0,0
+36,2,151,Cunningham,0,1
 37,3,814,Hewitt,0,1
-38,8,500,Eaton,2,0
+38,8,500,Eaton,2,1
 39,7,725,Hyde,0,1
 40,4,422,Sandoval,2,1
 41,16,500,averqueonda,2,1
 42,17,450,Coca,0,1
 43,34,156,lastTest.jpg,1,1
+44,35,354,martu.png,0,0

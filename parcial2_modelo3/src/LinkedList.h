@@ -57,6 +57,6 @@ int ll_map(LinkedList* this, int (*pFunc)(void*));
 int ll_reduceInt(LinkedList* this, int (*pFunc)(void*), int * pResultado);
 int ll_filter(LinkedList* this, int (*pFunc)(void*));
 int ll_filterByZone(LinkedList* this, int (*pFunc)(void*,char*),char * zonaFiltrar);
-int ll_mapAndBreak(LinkedList* this, int (*pFunc)(void*,int),int indice);
+int ll_mapAndBreak(LinkedList* this, int (*pFunc)(void*,int),int id);
 int ll_filterByInt(LinkedList* this, int (*pFunc)(void*,int),int Cobradas);
 int ll_reduceIntbyID(LinkedList* this, int (*pFunc)(void*,int), int * pResultado, int idCliente);

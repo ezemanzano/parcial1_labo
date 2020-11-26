@@ -500,6 +500,10 @@ int controller_cobrarVentas (LinkedList* pArrayListVentas,LinkedList* pArrayList
 	 			printf("\n Esa venta ya està cobrada...");
 	 		}
 	 	}
+		else
+		{
+			printf("No se encontrò ese id de Venta.");
+		}
 	}
 return retorno;
 }
