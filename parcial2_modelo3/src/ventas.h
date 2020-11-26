@@ -8,6 +8,8 @@
 #ifndef VENTAS_H_
 #define VENTAS_H_
 
+#define A_COBRAR 0
+#define COBRADA 1
 
 typedef struct
 {

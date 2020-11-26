@@ -161,7 +161,7 @@ int informes_cantidadAfichesporId(void*pElemento, int id){
 	int idClienteAux;
 	int estado;
 	ventas_getEstadoVenta(ventasAux,&estado);
-	if ( estado ==1 && ventas_getIdCliente(pElemento, &idClienteAux) == 0 && idClienteAux==id)
+	if ( estado == COBRADA && ventas_getIdCliente(pElemento, &idClienteAux) == 0 && idClienteAux==id)
 	{
 		ventas_getCantidadAfiches(ventasAux, &cantidadAfiches);
 		return cantidadAfiches;

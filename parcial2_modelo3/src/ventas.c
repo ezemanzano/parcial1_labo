@@ -511,7 +511,7 @@ int ventas_imprimirACobrar(void*thisA){
 		&&!(ventas_getNombreDelArchivo(ventasA, nombreAux))
 		&&!(ventas_getZona(ventasA, &zonaAux))
 		&&!(ventas_getEstadoVenta(ventasA, &estadoAux))
-		&& estadoAux == 0)
+		&& estadoAux == A_COBRAR)
 	{
 		 if (zonaAux == 0)
 		{
@@ -584,7 +584,7 @@ int ventas_imprimirCobradas(void*thisA){
 		&&!(ventas_getNombreDelArchivo(ventasA, nombreAux))
 		&&!(ventas_getZona(ventasA, &zonaAux))
 		&&!(ventas_getEstadoVenta(ventasA, &estadoAux))
-		&& estadoAux == 1)
+		&& estadoAux == COBRADA)
 	{
 		 if (zonaAux == 0)
 			{
@@ -670,7 +670,7 @@ int ventas_findMaxAfiches (LinkedList * pArrayListVentas)
 		ventasAux = ll_get(pArrayListVentas, i);
 		ventas_getCantidadAfiches(ventasAux, &afichesAux);
 		ventas_getEstadoVenta(ventasAux, &estado);
-		if (i == 0 || (estado ==1 &&afichesAux>=maxAfiches))
+		if (i == 0 || (estado ==COBRADA &&afichesAux>=maxAfiches))
 		{
 			maxAfiches = afichesAux;
 			retorno = i;
@@ -692,7 +692,7 @@ int ventas_cobradasPorCliente(void* thisA, int idCliente)
 		int idClienteAux;
 		ventas_getEstadoVenta(ventasAux, &estadoAux);
 		ventas_getIdCliente(ventasAux, &idClienteAux);
-		if (idCliente == idClienteAux && estadoAux == 0)
+		if (idCliente == idClienteAux && estadoAux == COBRADA)
 		{
 			retorno=1;
 		}
@@ -713,7 +713,7 @@ int ventas_aCobrarPorCliente(void* thisA, int idCliente)
 		int idClienteAux;
 		ventas_getEstadoVenta(ventasAux, &estadoAux);
 		ventas_getIdCliente(ventasAux, &idClienteAux);
-		if (idCliente == idClienteAux && estadoAux == 1)
+		if (idCliente == idClienteAux && estadoAux == A_COBRAR)
 		{
 			retorno=1;
 		}

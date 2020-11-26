@@ -76,13 +76,13 @@ int main(void) {
 			pArrayListVentasCobradas=ll_clone(pArrayListVentas);
 			ll_filterByInt(pArrayListVentasCobradas,ventas_filtrarPorCobradas,1);
 			ll_map(pArrayListVentasCobradas,ventas_imprimirTodos);
-			controller_generarListaAcobrar("cobradas.csv", pArrayListClientes,pArrayListVentasCobradas);
+			controller_generarListaCobrados("a_cobrar.csv", pArrayListClientes,pArrayListVentasCobradas);
 			break;
 		case 6:
 			pArrayListVentasACobrar=ll_clone(pArrayListVentas);
 			ll_filterByInt(pArrayListVentasACobrar,ventas_filtrarPorCobradas,0);
 			ll_map(pArrayListVentasACobrar,ventas_imprimirTodos);
-			controller_generarListaCobrados("a_cobrar.csv", pArrayListClientes,pArrayListVentasACobrar);
+			controller_generarListaAcobrar("cobradas.csv", pArrayListClientes,pArrayListVentasACobrar);
 			break;
 		case 7:
 			do
